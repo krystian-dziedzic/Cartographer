@@ -17,7 +17,7 @@ private:
 public:
 	App();
 	~App();
-	void Init();
+	int Init();
 	void Run();
 };
 
