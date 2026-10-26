@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Cartographer.vcxproj" />
+  <Project Path="Cartographer.vcxproj" Id="fc607cbd-cd39-41df-a2d0-6925b6a3c78e" />
 </Solution>
