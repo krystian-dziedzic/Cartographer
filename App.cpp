@@ -37,6 +37,7 @@ int App::Init()
 	}
 
 	glfwSetFramebufferSizeCallback(window, window_size_callback);
+	return 0;
 }
 
 void App::Run()
