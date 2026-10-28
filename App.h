@@ -11,6 +11,7 @@ class App
 private:
 	GLFWwindow* window = nullptr;
 	unsigned int VBO = 0;
+	unsigned int VAO = 0;
 	static void window_size_callback(GLFWwindow* window, int width, int height)
 	{
 		glViewport(0, 0, width, height);
