@@ -91,6 +91,7 @@ int App::Init()
 
 	glfwSetFramebufferSizeCallback(window, window_size_callback);
 	InitTriangle();
+	InitShaders();
 	return 0;
 }
 
@@ -102,8 +103,13 @@ void App::Run()
 		{
 			glfwSetWindowShouldClose(window, true);
 		}
-		glClearColor(sin(glfwGetTime()) * 0.5f + 0.5f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		glUseProgram(shaderProgram);
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
