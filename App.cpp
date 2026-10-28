@@ -60,10 +60,13 @@ App::App()
 
 App::~App()
 {
+	if (window)
+	{
+		glDeleteVertexArrays(1, &VAO);
+		glDeleteBuffers(1, &VBO);
+		glDeleteProgram(shaderProgram);
+	}
 	glfwTerminate();
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glDeleteProgram(shaderProgram);
 }
 
 int App::Init()
