@@ -61,6 +61,9 @@ App::App()
 App::~App()
 {
 	glfwTerminate();
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteProgram(shaderProgram);
 }
 
 int App::Init()
