@@ -12,6 +12,7 @@ private:
 	GLFWwindow* window = nullptr;
 	unsigned int VBO = 0;
 	unsigned int VAO = 0;
+	unsigned int shaderProgram = 0;
 	static void window_size_callback(GLFWwindow* window, int width, int height)
 	{
 		glViewport(0, 0, width, height);
@@ -22,5 +23,6 @@ public:
 	int Init();
 	void Run();
 	void InitTriangle();
+	void InitShaders();
 };
 

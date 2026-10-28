@@ -1,5 +1,58 @@
 #include "App.h"
 #include <math.h>
+#include <iostream>
+
+static unsigned int CompileShader(GLenum type, const char* src)
+{
+	unsigned int shader = glCreateShader(type);
+	glShaderSource(shader, 1, &src, nullptr);
+
+	glCompileShader(shader);                    
+	int ok;
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &ok);
+	if (!ok)
+	{
+		char log[512];
+		glGetShaderInfoLog(shader, 512, nullptr, log);
+		std::cout << "Shader error:\n" << log << std::endl;
+	}
+	return shader;
+}
+
+void App::InitShaders()
+{
+	const char* vsSrc = R"(
+		#version 330 core
+		layout (location = 0) in vec3 aPos;
+
+		void main()
+		{
+			gl_Position = vec4(aPos, 1.0);
+		}
+	)";
+
+	const char* fsSrc = R"(
+		#version 330 core
+		out vec4 FragColor;
+
+		void main()
+		{
+			FragColor = vec4(1.0, 0.5, 0.2, 1.0);
+		}
+	)";
+
+	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vsSrc);
+	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fsSrc);
+
+	shaderProgram = glCreateProgram();
+	glAttachShader(shaderProgram, vs);
+	glAttachShader(shaderProgram, fs);
+	glLinkProgram(shaderProgram);
+
+	glDeleteShader(vs);
+	glDeleteShader(fs);
+}
+
 App::App()
 {
 	Init();
