@@ -43,7 +43,7 @@ void App::Run()
 		{
 			glfwSetWindowShouldClose(window, true);
 		}
-		glClearColor(sin(glfwGetTime()), 0.0f, 0.0f, 1.0f);
+		glClearColor(sin(glfwGetTime()) * 0.5f + 0.5f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		glfwSwapBuffers(window);
 		glfwPollEvents();
