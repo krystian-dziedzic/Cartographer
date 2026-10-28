@@ -29,7 +29,7 @@ int App::Init()
 	{
 		glfwDestroyWindow(window);
 		window = nullptr;
-		return 0;
+		return -1;
 	}
 
 	glfwSetFramebufferSizeCallback(window, window_size_callback);
